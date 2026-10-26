@@ -1,0 +1,17 @@
+name: langgraph-tests
+services:
+  postgres-test:
+    image: postgres:16
+    ports:
+      - "5442:5432"
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: pg_isready -U postgres
+      start_period: 20s
+      timeout: 0s
+      retries: 5
+      interval: 50s
+      start_interval: 2s
